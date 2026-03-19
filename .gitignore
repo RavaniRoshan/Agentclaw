@@ -1,16 +1,11 @@
-# Astro site
-agentrace-site/dist/
-agentrace-site/.astro/
-agentrace-site/node_modules/
-
-# Old landing page (deleted — safety net)
-landing/
-/docs/
-
 # Python
 __pycache__/
 *.pyc
 *.pyo
+*.egg-info/
+dist/
+build/
+*.egg
 
 # Node
 node_modules/
@@ -19,5 +14,14 @@ node_modules/
 *.log
 server.log
 
+# Astro site
+agentrace-site/dist/
+agentrace-site/.astro/
+agentrace-site/node_modules/
+
 # Test artifacts
 test_intel.mjs
+
+# Old landing page (deleted — safety net)
+landing/
+/docs/

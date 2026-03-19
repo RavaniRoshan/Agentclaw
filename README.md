@@ -410,39 +410,70 @@ AgentTrace is the only tool built specifically to debug **agentic loops** — th
 
 ---
 
+## Changelog
+
+### v0.2.1 (2026-03-19)
+
+**New Features:**
+- Live dashboard with real-time updates at http://localhost:7823
+- Agent drill-down view with patterns analysis
+- Trace detail view with step timeline
+- Failure Intelligence Engine — automatic root cause analysis
+- Recovery point detection
+- Dependency chain tracing
+- SQLite database for persistent storage
+- Non-blocking HTTP emit client
+- SSE (Server-Sent Events) for live updates
+- Mobile responsive design
+- Time filters (24h, 7d, all)
+- Dashboard documentation pages
+
+**Bug Fixes:**
+- Fixed intelligence endpoint subprocess handling
+- Fixed FOREIGN KEY constraint on intelligence table
+- Fixed version display inconsistencies
+
+**Python Package:** `agentclaw` on PyPI
+**npm Package:** `@ravaniroshan/agentrace` on npm
+
+### v0.2.0 (2026-03-15)
+
+- Initial v0.2 release
+
+### v0.1.0 (2026-03-10)
+
+- Initial release
+- Core decorators: `@trace`, `@trace_llm`, `@trace_tool`
+- JSON trace persistence
+- Visual timeline UI
+- Token/cost tracking
+- npm CLI
+
+---
+
 ## Roadmap
 
-**v0.1** *(current)*
-- [x] Core decorators — `@trace`, `@trace_llm`, `@trace_tool`
-- [x] JSON trace persistence — `~/.agentrace/traces/`
-- [x] Visual timeline UI with step inspector
-- [x] Token tracking — Ollama, OpenAI, Anthropic
-- [x] Cost tracking — per step + per run
-- [x] Error highlighting with full traceback
-- [x] npm CLI — `ui`, `traces`, `clear`
-- [x] Async support — `def` and `async def`
-- [x] LangChain auto-instrumentation via `patch_langchain()`
-- [x] Trace search + filter — by name, status, model, date
-- [x] Published on npm as `@ravaniroshan/agentrace`
-- [x] Published on PyPI as `agentrace`
+**v0.2.1** *(current)*
+- [x] Live dashboard with real-time updates
+- [x] Failure Intelligence Engine
+- [x] SQLite database
+- [x] Agent drill-down view
+- [x] Trace detail view
+- [x] Mobile responsive design
 
-**v0.2** *(next)*
+**v0.3** *(next)*
 - [ ] Side-by-side run comparison
-- [ ] Token waterfall chart — visualize budget per step
+- [ ] Token waterfall chart
 - [ ] CrewAI auto-instrumentation
 - [ ] LlamaIndex auto-instrumentation
-- [ ] Regression mode — flag behavior changes between runs
-
-**v0.3** *(planned)*
-- [ ] CI/CD integration — fail build on behavior regression
-- [ ] VS Code extension — see traces inline while coding
-- [ ] Export trace as shareable HTML report
-- [ ] Multi-run cost dashboard
+- [ ] CI/CD integration — fail build on regression
+- [ ] VS Code extension
 
 **v1.0** *(horizon)*
 - [ ] AgentTrace Cloud — share traces across your team
 - [ ] Team dashboards + run history
 - [ ] Slack / Discord alerts on agent failure
+- [ ] Export trace as shareable HTML report
 
 ---
 
@@ -476,25 +507,30 @@ Before opening a PR:
 ## Repository Structure
 
 ```
-agentrace/
-├── agentrace/               ← Python library (pip install agentrace)
+AgentTrace/
+├── agentrace/               ← Python library (pip install agentclaw)
 │   ├── collector.py         ← core event capture, thread-safe
 │   ├── decorators.py        ← @trace @trace_llm @trace_tool
-│   ├── storage.py           ← JSON persistence, ~/.agentrace/traces/
+│   ├── intelligence.py      ← failure intelligence engine
+│   ├── client.py            ← HTTP emit client
+│   ├── storage.py           ← JSON persistence
 │   ├── server.py            ← FastAPI server (Python alternative)
 │   ├── cli.py               ← Python CLI entry point
-│   └── ui/index.html        ← web viewer UI
+│   └── ui/                  ← web viewer UI
 ├── agentrace-npm/           ← npm package (npx @ravaniroshan/agentrace)
 │   ├── bin/agentrace.js     ← CLI entrypoint
 │   ├── src/
 │   │   ├── server.js        ← Express server
+│   │   ├── db.js            ← SQLite database
 │   │   ├── commands/        ← ui, traces, clear
-│   │   └── ui/index.html    ← web viewer UI
+│   │   └── ui/index.html    ← dashboard UI
 │   └── package.json
 ├── agentrace-site/          ← docs site (Astro + Starlight)
-│   └── src/content/docs/    ← all documentation pages
 ├── examples/
-│   └── basic_agent.py       ← demo agent (success + failure)
+│   ├── basic_agent.py       ← demo agent
+│   └── dashboard_demo.py    ← dashboard demo
+├── tests/
+│   └── test_intelligence.py ← intelligence tests
 └── README.md
 ```
 
