@@ -112,6 +112,8 @@ export default defineConfig({
           label: "Getting Started",
           items: [
             { label: "Quick Start", slug: "guides/quickstart" },
+            { label: "Dashboard", slug: "guides/dashboard" },
+            { label: "Failure Intelligence", slug: "guides/failure-intelligence" },
             { label: "How It Works", slug: "guides/how-it-works" },
             { label: "Installation", slug: "guides/installation" },
           ],

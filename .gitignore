@@ -6,3 +6,18 @@ agentrace-site/node_modules/
 # Old landing page (deleted — safety net)
 landing/
 /docs/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# Node
+node_modules/
+
+# Logs
+*.log
+server.log
+
+# Test artifacts
+test_intel.mjs

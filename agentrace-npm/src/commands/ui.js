@@ -1,4 +1,4 @@
-import { createApp, PORT, TRACES_DIR } from "../server.js";
+import { createApp, PORT, TRACES_DIR, migrateLegacyTraces } from "../server.js";
 import { existsSync, mkdirSync } from "fs";
 import { createServer } from "http";
 import chalk from "chalk";
@@ -16,6 +16,7 @@ export async function startUI() {
   }).start();
 
   const app = createApp();
+  migrateLegacyTraces();
   const server = createServer(app);
 
   await new Promise((resolve, reject) => {

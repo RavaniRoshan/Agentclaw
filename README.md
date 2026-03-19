@@ -106,6 +106,29 @@ You see this:
 
 Bug found. Fixed in 30 seconds.
 
+## Dashboard
+
+```bash
+npx @ravaniroshan/agentrace
+```
+
+Open http://localhost:7823 to see:
+- All agent runs — live as they happen
+- Costs, success rate, avg duration at a glance
+- Automatic root cause analysis on every failure
+- Time filters: last 24h / 7 days / all time
+
+### Failure Intelligence
+
+When an agent run fails, AgentTrace automatically identifies the root cause:
+
+- Which step made the run unrecoverable
+- Why that step's output caused the downstream failure
+- The last recovery point before the failure chain began
+- Recurring failure patterns across multiple runs
+
+No configuration. No API keys. Fires automatically on every failed run.
+
 ---
 
 ## How It Works

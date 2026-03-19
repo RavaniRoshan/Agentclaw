@@ -36,11 +36,13 @@ class Trace:
     trace_id: str
     run_name: str
     started_at: str
+    ended_at: Optional[str] = None
     status: str = "running"
     finished_at: Optional[str] = None
     total_duration_ms: Optional[float] = None
     total_tokens_in: int = 0
     total_tokens_out: int = 0
+    total_tokens: int = 0
     error: Optional[str] = None
     steps: list = field(default_factory=list)
     metadata: dict = field(default_factory=dict)
@@ -88,6 +90,7 @@ class TraceCollector:
         start = datetime.fromisoformat(trace.started_at)
         end = datetime.fromisoformat(finished_at)
         trace.finished_at = finished_at
+        trace.ended_at = finished_at
         trace.total_duration_ms = round((end - start).total_seconds() * 1000, 2)
         trace.status = "failed" if error else "completed"
         trace.error = error

@@ -52,6 +52,21 @@ class TraceStorage:
         path = TRACES_DIR / f"{trace.trace_id}.json"
         with open(path, "w") as f:
             json.dump(trace.to_dict(), f, indent=2, default=str)
+
+        # Emit run end event to server
+        from agentrace.client import get_client
+        client = get_client()
+        client.emit_run_end({
+            'trace_id': trace.trace_id,
+            'status': trace.status,
+            'ended_at': trace.ended_at,
+            'total_duration_ms': trace.total_duration_ms,
+            'total_steps': len(trace.steps),
+            'total_tokens': trace.total_tokens,
+            'total_cost_usd': trace.total_cost_usd,
+            'error': trace.error
+        })
+
         return path
 
     @staticmethod
