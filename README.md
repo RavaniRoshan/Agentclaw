@@ -1,6 +1,7 @@
 <div align="center">
 
-<img src="./banner.svg" alt="AgentTrace — Visual debugger for AI agent loops" width="100%"/>
+<img width="900" height="220" alt="image" src="https://github.com/user-attachments/assets/9c5847ff-0702-44ef-88f8-2a1f5e514543" />
+
 
 <br />
 <br />
