@@ -1,6 +1,7 @@
 <div align="center">
 
-<img width="900" height="220" alt="OpenJCK — Visual debugger for AI agent loops" src="https://github.com/user-attachments/assets/9c5847ff-0702-44ef-88f8-2a1f5e514543" />
+<img width="4190" height="919" alt="image" src="https://github.com/user-attachments/assets/b68531aa-03d8-489c-931c-e9aeee35dad0" />
+
 
 <br />
 <br />
@@ -18,7 +19,6 @@
 
 <br />
 
-<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/982bafc7-ffac-4582-8166-0f9028a0b7bd" />
 
 
 
