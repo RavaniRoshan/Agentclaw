@@ -1,6 +1,6 @@
 """Demo script to populate the OpenJCK dashboard with sample traces."""
-from openjck import trace, trace_llm, trace_tool
-import time, random
+from openjck import trace, trace_tool
+import time
 
 
 @trace(name="research_agent")

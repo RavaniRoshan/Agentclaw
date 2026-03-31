@@ -1,7 +1,9 @@
-import sys, os
+import os
+import sys
+
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from openjck.intelligence import analyse_trace, DependencyChainTracer, RecoveryPointDetector
+from openjck.intelligence import analyse_trace
 
 
 def test_root_cause_detection():
