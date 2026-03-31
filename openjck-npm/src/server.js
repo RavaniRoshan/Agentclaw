@@ -320,7 +320,7 @@ print(json.dumps({
   });
 
   app.get("/api/health", (req, res) => {
-    res.json({ status: "ok", version: "0.2.1", runtime: "node" });
+    res.json({ status: "ok", version: "0.3.0", runtime: "node" });
   });
 
   app.get("/api/traces", (req, res) => {

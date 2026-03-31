@@ -453,7 +453,7 @@ OpenJCK is the only tool built specifically to debug **agentic loops** — the m
 
 ## Roadmap
 
-**v0.2.1** *(current)*
+**v0.3.0** *(current)*
 - [x] Live dashboard with real-time updates
 - [x] Failure Intelligence Engine
 - [x] SQLite database
@@ -461,7 +461,7 @@ OpenJCK is the only tool built specifically to debug **agentic loops** — the m
 - [x] Trace detail view
 - [x] Mobile responsive design
 
-**v0.3** *(next)*
+**v0.3** *(✅ shipped — in development)*
 - [ ] Side-by-side run comparison
 - [ ] Token waterfall chart
 - [ ] CrewAI auto-instrumentation

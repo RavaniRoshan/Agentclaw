@@ -44,7 +44,7 @@ export async function startUI() {
 
   console.log("");
   console.log(
-    `  ${chalk.hex("#7c6af7")("◈ OpenJCK")}  ${chalk.gray("v0.2.1")}`,
+    `  ${chalk.hex("#7c6af7")("◈ OpenJCK")}  ${chalk.gray("v0.3.0")}`,
   );
   console.log("");
   console.log(`  ${chalk.white("UI       ")}${chalk.cyan("http://localhost:7823")}`);
