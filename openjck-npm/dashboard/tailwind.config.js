@@ -16,8 +16,8 @@ export default {
         surface: '#2c2c2c',
         border: '#3e3e3e',
         muted: '#8b8d91',
-        accent: '#3ecf8e',
-        success: '#3ecf8e',
+        accent: '#fbbf24',    // Amber for black & yellow theme
+        success: '#fbbf24',   // Amber for success
         error: '#ff5b5b',
         warning: '#f5a623',
         info: '#4da6ff',

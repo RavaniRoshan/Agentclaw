@@ -4,12 +4,12 @@ import { createRequire } from "module";
 const require = createRequire(import.meta.url);
 const VERSION = require("../package.json").version;
 
-// Color Palette from original banner.svg gradient
-const violet = chalk.hex("#7c6af7");
-const purple = chalk.hex("#a78bfa");
-const lavender = chalk.hex("#c084fc");
-const blue = chalk.hex("#60a5fa");
-const green = chalk.hex("#34d399");
+// Color Palette for Black & Yellow theme
+const violet = chalk.hex("#f59e0b"); // Re-mapped to amber-500 (Borders)
+const purple = chalk.hex("#fbbf24"); // Re-mapped to amber-400 (Raven)
+const lavender = chalk.hex("#fde68a"); // Re-mapped to amber-200 (Version)
+const blue = chalk.hex("#d4d4d8"); // Re-mapped to zinc-300 (Urls)
+const green = chalk.hex("#fbbf24"); // Re-mapped to amber-400 (Checkmarks)
 const white = chalk.white;
 const whiteBold = chalk.white.bold;
 const dim = chalk.gray;
