@@ -44,7 +44,7 @@ export async function startUI() {
   spinner.stop();
 
   // Show the branded welcome banner after server is ready
-  showWelcome(TRACES_DIR);
+  showWelcome(`http://localhost:${PORT}`);
 
   try {
     await open("http://localhost:7823");

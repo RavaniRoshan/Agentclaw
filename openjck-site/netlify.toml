@@ -1,8 +1,0 @@
-[build]
-  command   = "npm run og && npm run build"
-  publish   = "dist"
-
-[[redirects]]
-  from   = "/*"
-  to     = "/:splat"
-  status = 200

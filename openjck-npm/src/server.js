@@ -320,7 +320,11 @@ print(json.dumps({
   });
 
   app.get("/api/health", (req, res) => {
-    res.json({ status: "ok", version: "0.2.1", runtime: "node" });
+    import("module").then(({ createRequire }) => {
+      const require = createRequire(import.meta.url);
+      const version = require("../package.json").version;
+      res.json({ status: "ok", version, runtime: "node" });
+    });
   });
 
   app.get("/api/traces", (req, res) => {

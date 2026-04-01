@@ -1,6 +1,8 @@
 #!/usr/bin/env node
 
-const VERSION = "0.2.2";
+import { createRequire } from "module";
+const require = createRequire(import.meta.url);
+const VERSION = require("../package.json").version;
 
 const HELP_TEXT = `
   OpenJCK — Visual debugger for AI agent loops

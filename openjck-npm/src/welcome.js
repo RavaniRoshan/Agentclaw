@@ -1,78 +1,71 @@
 import chalk from "chalk";
-import figlet from "figlet";
+import { createRequire } from "module";
 
-const amber = chalk.hex("#f59e0b");
-const dimAmber = chalk.hex("#b47a00");
-const brand = chalk.hex("#7c6af7");
+const require = createRequire(import.meta.url);
+const VERSION = require("../package.json").version;
+
+// Color Palette from original banner.svg gradient
+const violet = chalk.hex("#7c6af7");
+const purple = chalk.hex("#a78bfa");
+const lavender = chalk.hex("#c084fc");
+const blue = chalk.hex("#60a5fa");
+const green = chalk.hex("#34d399");
+const white = chalk.white;
+const whiteBold = chalk.white.bold;
 const dim = chalk.gray;
-const bright = chalk.white;
-const green = chalk.green;
 
-const VERSION = "0.2.1";
-
-export function showWelcome(tracesDir) {
-  // Generate Figlet text synchronously
-  const bannerText = figlet.textSync("OpenJCK", {
-    font: "Standard",
-    horizontalLayout: "default",
-    verticalLayout: "default",
-  });
-
-  // Apply colors to the generated text
-  const coloredBanner = bannerText
-    .split("\n")
-    .map((line) => amber(line))
-    .join("\n");
+export function showWelcome(serverUrl = "http://localhost:7823") {
+  const cols = process.stdout.columns;
+  const terminalWidth = (typeof cols === 'number' && cols > 0) ? cols : 80;
 
   console.log("");
-  console.log(coloredBanner);
-  console.log(`\n      ${dimAmber("Observability + Reliability for AI Agents")}\n`);
 
-  // ── Status ────────────────────────────────────────
-  console.log(`  ${green("✅")} ${bright("OpenJCK")} ${dim(`v${VERSION}`)} ${green("started")}`);
-  console.log("");
-
-  // ── Quick Start ───────────────────────────────────
-  console.log(`  ${amber("🚀")} ${bright("Quick Start:")}`);
-  console.log("");
-  console.log(`     ${bright("Open dashboard:")}   ${chalk.cyan("http://localhost:7823")}`);
-  console.log(`     ${bright("Trace your code:")}  ${dim("@trace(name=\"agent_name\")")}`);
-  console.log(`     ${bright("View results:")}     ${dim("Live in the dashboard")}`);
-  console.log("");
-
-  // ── Code Example ──────────────────────────────────
-  console.log(`  ${dim("─────────────────────────────────────────────────")}`);
-  console.log(`  ${dim("from openjck import trace")}`);
-  console.log("");
-  console.log(`  ${dim("@trace(name=\"my_agent\")")}`);
-  console.log(`  ${dim("def my_function():")}`);
-  console.log(`  ${dim("    # Your code here")}`);
-  console.log(`  ${dim("    pass")}`);
-  console.log(`  ${dim("─────────────────────────────────────────────────")}`);
-  console.log("");
-
-  // ── Resources ─────────────────────────────────────
-  console.log(`  ${amber("📚")} ${bright("Resources:")}`);
-  console.log(`     ${bright("Docs:")}     ${chalk.cyan("https://openjck.dev")}`);
-  console.log(`     ${bright("GitHub:")}   ${chalk.cyan("https://github.com/ravaniroshan/openjck")}`);
-  console.log(`     ${bright("Issues:")}   ${chalk.cyan("https://github.com/ravaniroshan/openjck/issues")}`);
-  console.log("");
-
-  // ── What's Tracked ────────────────────────────────
-  console.log(`  ${amber("💡")} ${bright("What's Tracked:")}`);
-  console.log(`     ${dim("•")} Step execution with timing`);
-  console.log(`     ${dim("•")} Token usage + cost (USD)`);
-  console.log(`     ${dim("•")} Tool calls and results`);
-  console.log(`     ${dim("•")} Failure root causes`);
-  console.log(`     ${dim("•")} Loop detection (same tool 3x)`);
-  console.log("");
-
-  // ── Footer ────────────────────────────────────────
-  console.log(`  ${dim("Your data stays local. Dashboard runs at")} ${chalk.cyan("http://localhost:7823")}`);
-  if (tracesDir) {
-    console.log(`  ${dim("Traces:")} ${dim(tracesDir)}`);
+  if (terminalWidth < 60) {
+    // Fallback for very narrow terminals
+    console.log(`  🪶  ${whiteBold("OpenJCK")} ${lavender(`v${VERSION}`)}`);
+    console.log(`  ${green("✓")} Server ready   ${blue(serverUrl)}`);
+    console.log(`  ${green("✓")} Traces synced  ${dim("~/.openjck/")}`);
+    console.log("");
+    console.log(`  Quick Start: ${blue(serverUrl)}`);
+    console.log(`  Docs:        ${dim("https://openjck.dev")}`);
+    console.log("");
+    return;
   }
-  console.log("");
-  console.log(`  ${dim("Press")} ${bright("Ctrl+C")} ${dim("to stop the server.")}`);
+
+  // Full Box-drawn Banner (~75 chars wide)
+  const banner = `
+  ${violet("╭──────────────────────────────────────────────────────────────────────────╮")}
+  ${violet("│")}                                                                          ${violet("│")}
+  ${violet("│")}      ${purple("▄▀▀▀▄")}                                                               ${violet("│")}
+  ${violet("│")}     ${purple("█  ◈  █▄▄▄▄")}                                                          ${violet("│")}
+  ${violet("│")}      ${purple("▀▄▄▄▀▀▀▀▀▒░")}     ${whiteBold("O P E N J C K")}                                      ${violet("│")}
+  ${violet("│")}                        ${lavender(`v${VERSION}`)}                                         ${violet("│")}
+  ${violet("│")}                                                                          ${violet("│")}
+  ${violet("│")}      ${white("Visual Debugger for AI Agent Loops")}                                  ${violet("│")}
+  ${violet("│")}                                                                          ${violet("│")}
+  ${violet("│")}   ${green("✓")}  ${white("Server listening")}    ${blue(serverUrl)}                            ${violet("│")}
+  ${violet("│")}   ${green("✓")}  ${white("Database ready")}      ${dim("~/.openjck/openjck.db")}                       ${violet("│")}
+  ${violet("│")}   ${green("✓")}  ${white("Dashboard loaded")}    ${white("React UI")}                                    ${violet("│")}
+  ${violet("│")}                                                                          ${violet("│")}
+  ${violet("│")}   ${whiteBold("Quick Start")}                                                        ${violet("│")}
+  ${violet("│")}                                                                          ${violet("│")}
+  ${violet("│")}    ${violet.bold("1")}  ${white("Open dashboard")}     ${blue(serverUrl)}                            ${violet("│")}
+  ${violet("│")}    ${violet.bold("2")}  ${white("Instrument code")}    ${dim("from openjck import trace")}                   ${violet("│")}
+  ${violet("│")}    ${violet.bold("3")}  ${white("Run your agent")}     ${white("Traces appear live")}                         ${violet("│")}
+  ${violet("│")}                                                                          ${violet("│")}
+  ${violet("│")}   ${dim("─────────────────────────────────────────────────")}                      ${violet("│")}
+  ${violet("│")}   ${dim("Docs")}    ${blue("https://openjck.dev")}                                        ${violet("│")}
+  ${violet("│")}   ${dim("GitHub")}  ${blue("github.com/RavaniRoshan/openjck")}                            ${violet("│")}
+  ${violet("│")}   ${dim("─────────────────────────────────────────────────")}                      ${violet("│")}
+  ${violet("│")}                                                                          ${violet("│")}
+  ${violet("│")}   ${dim("Data stays local. Zero cloud dependencies.")}                             ${violet("│")}
+  ${violet("│")}   ${dim("Press")} ${white("Ctrl+C")} ${dim("to stop.")}                                                  ${violet("│")}
+  ${violet("│")}                                                                          ${violet("│")}
+  ${violet("╰──────────────────────────────────────────────────────────────────────────╯")}
+  `;
+
+  // Remove the initial newline and trim trailing whitespace
+  const formattedBanner = banner.replace(/^\n/, "").trimRight();
+  console.log(formattedBanner);
   console.log("");
 }

@@ -412,16 +412,16 @@ OpenJCK is the only tool built specifically to debug **agentic loops** — the m
 
 ## Changelog
 
-### v0.2.2 (Current)
+### v0.3.0 (Current)
 
 **New Features & Polish:**
 - Complete Dashboard UI rewrite (migrated from vanilla HTML to a modular React + Vite architecture).
 - Deep aesthetic overhaul: Switched to a professional, flat dark-mode developer UI inspired by Vercel/Supabase.
-- ASCII Art welcome banner for CLI using `figlet`.
+- Hand-crafted CLI welcome banner (dropped figlet).
 - Custom high-contrast scrollbars to replace clunky browser defaults.
 - Overhauled timeline and detail mechanics for massive readability improvements of trace steps and JSON payloads.
 
-### v0.2.1
+### v0.2.1 (2026-03-31)
 
 **New Features:**
 - Live dashboard with real-time updates at http://localhost:7823
@@ -462,7 +462,7 @@ OpenJCK is the only tool built specifically to debug **agentic loops** — the m
 
 ## Roadmap
 
-**v0.2.1** *(current)*
+**v0.2.1** *(completed)*
 - [x] Live dashboard with real-time updates
 - [x] Failure Intelligence Engine
 - [x] SQLite database
@@ -470,7 +470,11 @@ OpenJCK is the only tool built specifically to debug **agentic loops** — the m
 - [x] Trace detail view
 - [x] Mobile responsive design
 
-**v0.3** *(in development)*
+**v0.3.0** *(current)*
+- [x] Complete Dashboard UI rewrite (React + Vite)
+- [x] Hand-crafted CLI welcome banner
+
+**v0.4** *(in development)*
 - [ ] Side-by-side run comparison
 - [ ] Token waterfall chart
 - [ ] CrewAI auto-instrumentation

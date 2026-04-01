@@ -1,11 +1,11 @@
-# OpenJCK v0.2.1 Pre-Launch Checklist
+# OpenJCK v0.3.0 Pre-Launch Checklist
 
-This internal document confirms we are ready to ship v0.2.1.
+This internal document confirms we are ready to ship v0.3.0.
 
 [x] VERSION ALIGNMENT
-    - All version strings say 0.2.1: `npm audit` is configured for 0.2.1
-    - Health endpoint returning 0.2.1
-    - README roadmap confirms v0.2.1 as current
+    - All version strings say 0.3.0: `npm audit` is configured for 0.3.0
+    - Health endpoint returning 0.3.0
+    - README roadmap confirms v0.3.0 as current
 
 [x] README CLARITY
     - Quick Start is runnable and short
@@ -30,11 +30,11 @@ This internal document confirms we are ready to ship v0.2.1.
     - Fallback message added in Python when UI accessed via its server
 
 [x] PYTHON PACKAGE
-    - `__version__` bumped down to 0.2.1
+    - `__version__` bumped down to 0.3.0
     - No backward compatibility breaks
 
 ## Next Steps for Publisher
 1. `cd openjck-npm && npm publish`
 2. `python -m build && twine upload dist/*`
-3. Push `v0.2.1` tag to git and create GitHub Release
+3. Push `v0.3.0` tag to git and create GitHub Release
 4. Share on PH/Twitter
